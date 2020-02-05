@@ -21,7 +21,7 @@ joblib must also then added to the CLIMADA conda environment to run the model. O
 
 conda install -n climada_env joblib
 
-##Launch
+## Launch
 Once CLIMADA and joblib are installed, navigate to master_thesis_repo/launch/bash_scripts
 
 the model can then be launched from the command line, giving at least the arguments for the location of CLIMADA and the CH2018 data (no need to activate CLIMADA):
@@ -45,6 +45,8 @@ bsub -n 32 -M  /model_run.sh -./model_run.sh -d /path/to/climada -f /path/to/CH2
 
 more information on the possible arguments for the cluster can be found here: 
 https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
+
+## Data Analyis
 
 The results jupyter notebook in master_thesis_repo/data_analysis/notebooks/ shows how to get the the damage costs for the different cantons from the Swiss impact matrix
 
