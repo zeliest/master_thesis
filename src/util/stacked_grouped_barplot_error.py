@@ -4,7 +4,7 @@ import matplotlib.cm as cm
 import numpy as np
 import matplotlib.pyplot as plt
 def plot_clustered_stacked_with_error(dataframe, minimums,maximums, color = None):
-    fig, ax = plt.subplots()
+    ax = plt.subplot(111)
     labels_graph = list(dataframe[list(dataframe.keys())[0]])
     lc = len(dataframe[list(dataframe.keys())[0]].columns)
     width = 0.2

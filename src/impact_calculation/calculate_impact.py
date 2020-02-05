@@ -39,7 +39,7 @@ def calculate_impact(directory_hazard,scenario,year,EXPOSURES,exposures_name,unc
 						 working_hours=working_hours,sun_protection=sun_protection, only_outside=efficient_buildings)
 	####################################################################################################
 
-	if uncertainty_variable == 'impactfunction' or uncertainty_variable=='all':
+	if uncertainty_variable == 'impactfunction' or uncertainty_variable=='all' or uncertainty_variable == 'model':
 		TF = True
 	else: 
 		TF = False

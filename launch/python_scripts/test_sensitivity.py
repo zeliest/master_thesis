@@ -54,11 +54,15 @@ sun_protection = False
 # in this basic model run, all uncertainties are taken into accout.
 # his is not the case in the sensibility testing code where all are taken seperatly.
 if (sys.argv[6]) == '1':
-    uncertainty_variables_list   = ['hourly_temperature','sun_or_shadow','t_to_wbgt','temp_in','impactfunction','simulations']
+    uncertainty_variables_list   = ['hourly_temperature','sun_or_shadow','t_to_wbgt','temp_in','impactfunction'
+        ,'simulations','years']
     uncertainty = 'all_uncertainties_independently'
 elif (sys.argv[6]) == '2':
-    uncertainty_variables_list   = ['year']
+    uncertainty_variables_list   = ['ch2018']
     uncertainty = 'natural_variability_uncertainty'
+elif (sys.argv[6]) == '3':
+    uncertainty_variables_list   = ['model']
+    uncertainty = 'model_uncertainty'
 
 save_median_mat = False
 

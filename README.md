@@ -1,5 +1,5 @@
 # master_thesis
-##Master Thesis on the Cost of Heatwaves in Switzerland
+Master Thesis on the Cost of Heatwaves in Switzerland
 
 ## Prerequisites
 PYTHON 3.6+
@@ -7,8 +7,10 @@ Anaconda or Miniconda
 CLIMADA 1.3.1+
 Access to the CH2018 TASMIN and TASMAX gridded datasets (about 500 GB) if you want to run the simulation again:
 https://www.nccs.admin.ch/nccs/en/home/data-and-media-library/data/ch2018---climate-scenarios-for-switzerland.html
+
 follow this tutorial to install CLIMADA using Anaconda or Miniconda:
 https://climada-python.readthedocs.io/en/stable/guide/install.html
+
 To run the simulation, access to a cluster is necessary as the model requires 1000 runs for the results to stabilise and each run takes about 9 minutes on one core. Getting the damage for Switzerland, three RCP scenarios and three years requires 32 cores to run for about 24 hours.      
 The median impact matrix with and without the adaptation measures is saved in the output folder, and enables to calculate the median damage for the different cantons, without having to run the model again. However, to get the full distribution of the damage of a canton, the damage must be computed again. With the same number of cores as before, it takes only about 4 hours to calculate the damage for the canton of Zurich, and less than 2 for Geneva.
 

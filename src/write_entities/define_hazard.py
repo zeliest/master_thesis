@@ -55,14 +55,14 @@ def call_hazard(directory_hazard,scenario,year,uncertainty_variable='all',kanton
     error_hourly_t         = np.random.normal(0,RMSE_hourly_t) # error for the transformation from min T and max T to hourly T
     error_temp_in          = np.random.triangular(0,1,1.2) #error for the inside temperature estimation. 
     error_wbgt             = np.random.normal(0,2/3.92) #error for the transformation between T and WBGT
-    if uncertainty_variable == 'all' or uncertainty_variable == 'years':
-        ny=random.randint(-2, 2) #to be added to the year, so that any year in the +5 to -5 range can be picked
+    if uncertainty_variable == 'all' or uncertainty_variable == 'ch2018' or uncertainty_variable == 'years':
+        ny=random.randint(-3, 3) #to be added to the year, so that any year in the +5 to -5 range can be picked
     else: #if we are testing the sensitivity to the change in variables, we always want to be taking the same year and therefore add 0 
         ny = 0
 
     #simulation_elements = file.split('_')              #save charasteristics of the simulation as fiven in the file
    #simulation          = '_'.join(simulation_elements[4:7]) #mostly not needed but can be useful to study the behavior of the different simulations 
-    if uncertainty_variable == 'simulations' or uncertainty_variable == 'all' :
+    if uncertainty_variable == 'simulations' or uncertainty_variable == 'all' or uncertainty_variable == 'ch2018':
         tasmax_nc = np.random.choice(list(set(glob.glob(''.join([directory_hazard,'*',scenario,'*'])))))
     else:
         tasmax_nc = glob.glob(directory_hazard+'/*SMHI-RCA_NORESM_EUR44*')[0]
@@ -148,7 +148,7 @@ def call_hazard(directory_hazard,scenario,year,uncertainty_variable='all',kanton
                                      /2 *cos(pi*(h-h_max) / (h_min-h_max))
 
 
-                if uncertainty_variable == 'hourly_temperature':
+                if uncertainty_variable == 'hourly_temperature' or uncertainty_variable=='all' or uncertainty_variable == 'model':
                     temp[t,:,:]    = temp[t,:,:] + error_hourly_t
 
                 #in the case that the wbgt for any of the points on the map is larger then 22, 
@@ -157,7 +157,7 @@ def call_hazard(directory_hazard,scenario,year,uncertainty_variable='all',kanton
                 sun_or_shadow_functions = [T_to_WBGT_sun, T_to_WBGT]
                 sun_or_shadow_sd        = [sd_mean_sun,sd_mean]
 
-                if uncertainty_variable == 'sun_or_shadow' or uncertainty_variable=='all':
+                if uncertainty_variable == 'sun_or_shadow' or uncertainty_variable=='all' or uncertainty_variable == 'model':
                     one_zero=np.random.choice(ones_zero_random)
                     sun_or_shadow  = sun_or_shadow_functions[one_zero]
                     sd = sun_or_shadow_sd[one_zero] 
@@ -167,7 +167,7 @@ def call_hazard(directory_hazard,scenario,year,uncertainty_variable='all',kanton
                     sd = sun_or_shadow_sd[1] 
 
 
-                if uncertainty_variable == 't_to_wbgt' or uncertainty_variable=='all':
+                if uncertainty_variable == 't_to_wbgt' or uncertainty_variable=='all' or uncertainty_variable == 'model':
                     wbgt_out[t,:,:] = np.random.normal(sun_or_shadow(temp[t,:,:]),sd)+error_wbgt
                 else:
                     wbgt_out[t,:,:] = np.random.normal(sun_or_shadow(temp[t,:,:]),sd)
@@ -175,7 +175,7 @@ def call_hazard(directory_hazard,scenario,year,uncertainty_variable='all',kanton
                 if not only_outside:
                    
                     
-                    if uncertainty_variable == 'temp_in' or uncertainty_variable=='all':
+                    if uncertainty_variable == 'temp_in' or uncertainty_variable=='all' or uncertainty_variable == 'model':
 
                         temp_in[t,:,:]=temp[t,:,:]*(1+(np.array(T_diff_fit(h,*Tin_est)))*error_temp_in) #transform to inside temperature to make the wbgt>22 test for inside events
 
@@ -187,7 +187,7 @@ def call_hazard(directory_hazard,scenario,year,uncertainty_variable='all',kanton
                         #same as above for inside temperature):
 
 
-                    if uncertainty_variable == 't_to_wbgt' or uncertainty_variable=='all':                            
+                    if uncertainty_variable == 't_to_wbgt' or uncertainty_variable=='all' or uncertainty_variable == 'model':
                         wbgt_in[t,:,:] = (np.random.normal(T_to_WBGT(temp_in[t,:,:]),sd_mean))
 
                     else:
