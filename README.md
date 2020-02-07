@@ -52,11 +52,11 @@ A number of arguments are then optional:
         1=yes, 0=no. Default=0
     
     
-to run the simulation on the euler cluster, the arguments for the cluster are given first and the  arguments for the model after. For example to run the entire model for Switzerland for the year 2050, the RCP85 scenario, 1000 monte carlo simulations and saving the median impact matrix:
+To run the simulation on the euler cluster, the arguments for the cluster are given first and the  arguments for the model after. For example to run the entire model for Switzerland for the year 2050, the RCP85 scenario, 1000 monte carlo simulations and saving the median impact matrix:
 
     bsub -n 32 -R "rusage[mem=4000]" ./model_run.sh -d /path/to/climada -f /path/to/CH2018/ -y 2050 -s RCP85 -c 1000 -m 1
 
-more information on the possible arguments for the cluster can be found here: 
+More information on the possible arguments for the cluster can be found here: 
 https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
 
 ## Data Analyis
