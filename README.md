@@ -32,13 +32,17 @@ the model can then be launched from the command line, giving at least the argume
 A number of arguments are then optional:
 
     c) The number of monte carlo simulations. Default=1000
-    g) Area for which to calculate the impacts. Given as the name of a canton, or list of canton, in the main language of the given cantons. Default=CH
+    g) Area for which to calculate the impacts. 
+        Given as the name of a canton, or list of canton, in the main language of the given cantons. Default=CH
     y) Year or list of years for which to compute the damage. Default=2020,2035,2050 
     s) Scenario or list of scenarios. Default=RCP26, RCP45,RCP85
-    b) Branch or list of branches as defined in master_thesis_repo/input_data/exposures/work_intensity.csv in the GIS_data_code column. Default=0 (None) 
+    b) Branch or list of branches as defined in master_thesis_repo/input_data/exposures/work_intensity.csv 
+        in the GIS_data_code column. Default=0 (None) 
     a) List of adaptation measures. 0=Non, 1=sun protection, 2=efficient buildings, 3=adapted hours. Default=0
-    w) Working Hours if a was previously set to 3. The working hours must be precised as a list where the total time worked amounts to 8 hours (e.g. 8,12,13,17)   
-    m) Rather to only save the damage cost as a total for Switzerland or also save the spatial impact matrix. 1=yes, 0=no. Default=0
+    w) Working Hours if a was previously set to 3. 
+        The working hours must be precised as a list where the total time worked amounts to 8 hours (e.g. 8,12,13,17)   
+    m) Rather to only save the damage cost as a total for Switzerland or also save the spatial impact matrix. 
+        1=yes, 0=no. Default=0
     
     
 to run the simulation on the euler cluster, the arguments for the cluster are given first and the  arguments for the model after. For example to run the entire model for Switzerland for the year 2050, the RCP85 scenario, 1000 monte carlo simulations and saving the median impact matrix:
