@@ -2,7 +2,9 @@
 
 ## Prerequisites
 PYTHON 3.6+
+
 Anaconda or Miniconda 
+
 CLIMADA 1.3.1+
 
 Access to the CH2018 TASMIN and TASMAX gridded datasets (about 500 GB) needed to run the simulation:
@@ -32,7 +34,7 @@ A number of arguments are then optional:
     c) The number of monte carlo simulations. Default=1000
     g) Area for which to calculate the impacts. Given as the name of a canton, or list of canton, in the main language of the given cantons. Default=CH
     y) Year or list of years for which to compute the damage. Default=2020,2035,2050 
-    s) scenario or list of scenarios. Default=RCP26, RCP45,RCP85
+    s) Scenario or list of scenarios. Default=RCP26, RCP45,RCP85
     b) Branch or list of branches as defined in master_thesis_repo/input_data/exposures/work_intensity.csv in the GIS_data_code column. Default=0 (None) 
     a) List of adaptation measures. 0=Non, 1=sun protection, 2=efficient buildings, 3=adapted hours. Default=0
     w) Working Hours if a was previously set to 3. The working hours must be precised as a list where the total time worked amounts to 8 hours (e.g. 8,12,13,17)   
@@ -41,7 +43,7 @@ A number of arguments are then optional:
     
 to run the simulation on the euler cluster, the arguments for the cluster are given first and the  arguments for the model after. For example to run the entire model for Switzerland for the year 2050, the RCP85 scenario, 1000 monte carlo simulations and saving the median impact matrix:
 
-bsub -n 30 -M  /model_run.sh -./model_run.sh -d /path/to/climada -f /path/to/CH2018/ -y 2050 -s RCP85 -c 1000 -m 1
+    bsub -n 32 -R "rusage[mem=4000]"  /model_run.sh -./model_run.sh -d /path/to/climada -f /path/to/CH2018/ -y 2050 -s RCP85 -c 1000 -m 1
 
 more information on the possible arguments for the cluster can be found here: 
 https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
