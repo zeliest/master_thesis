@@ -32,6 +32,7 @@ the model can then be launched from the command line, giving at least the argume
 A number of arguments are then optional:
 
     c) The number of monte carlo simulations. Default=1000
+    
     g) Area for which to calculate the impacts. 
         Given as the name of a canton, or list of canton, in the main language of the given cantons. Default=CH
         
@@ -53,7 +54,7 @@ A number of arguments are then optional:
     
 to run the simulation on the euler cluster, the arguments for the cluster are given first and the  arguments for the model after. For example to run the entire model for Switzerland for the year 2050, the RCP85 scenario, 1000 monte carlo simulations and saving the median impact matrix:
 
-    bsub -n 32 -R "rusage[mem=4000]"  /model_run.sh -./model_run.sh -d /path/to/climada -f /path/to/CH2018/ -y 2050 -s RCP85 -c 1000 -m 1
+    bsub -n 32 -R "rusage[mem=4000]" ./model_run.sh -d /path/to/climada -f /path/to/CH2018/ -y 2050 -s RCP85 -c 1000 -m 1
 
 more information on the possible arguments for the cluster can be found here: 
 https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
