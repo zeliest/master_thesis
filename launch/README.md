@@ -6,4 +6,4 @@ For each type, the model_run script runs the model to calculate the impacts, whi
 the role of the different uncertainties in the model (the only possible flexible arguments for the sensitivity analysis are the region, the time and the scenario). 
 
 The bash script launches climada and allows to run the model from the terminal with different inputs, 
-while the python script translate these inputs in python.
+and the python script translate these inputs in python calls the monte carlo.
