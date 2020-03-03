@@ -25,7 +25,7 @@ joblib must also then be added to the CLIMADA conda environment to run the model
     conda install -n climada_env joblib
 
 ## Launch
-Once CLIMADA and joblib are installed, navigate to master_thesis_repo/launch/bash_scripts
+Once CLIMADA and joblib are installed, navigate to master_thesis/launch/bash_scripts
 
 the model can then be launched from the command line, giving at least the arguments for the location of CLIMADA and the CH2018 data (no need to activate CLIMADA):
 
@@ -65,7 +65,7 @@ https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
 
 ## Data Analyis
 
-The results jupyter notebook in master_thesis_repo/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model.
+The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model.
 
  
 
