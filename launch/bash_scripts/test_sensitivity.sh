@@ -3,10 +3,10 @@
 area='CH'
 years='2020,2035,2050'
 scenario='RCP26,RCP45,RCP85'
-n_mc=100
-uncertainties=1
+n_mc=1000
 
-while getopts "d::f::c::g::y::s::u::" opt; do
+
+while getopts "d::f::c::g::y::s::" opt; do
 
   case $opt in
 
@@ -21,8 +21,6 @@ while getopts "d::f::c::g::y::s::u::" opt; do
     y) years="$OPTARG"
     ;;
     s) scenario="$OPTARG"
-    ;;
-    u) uncertainties="$OPTARG"
     ;;
 
   esac
@@ -39,7 +37,7 @@ source activate climada_env
 cd $path_model
 
 
-python3 ${path_model}/../python_scripts/test_sensitivity.py $directory_ch2018 $n_mc $area $years $scenario $uncertainties
+python3 ${path_model}/../python_scripts/test_sensitivity.py $directory_ch2018 $n_mc $area $years $scenario
 
 #conda deactivate
 
