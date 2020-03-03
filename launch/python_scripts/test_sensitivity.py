@@ -13,56 +13,41 @@ sys.path.append('../../src/util/')
 from impact_monte_carlo_parallel import impact_monte_carlo
 
 
-def Convert(string):
+def convert(string):
     li = list(string.split(","))
     return li
 
-directory_output = '../../output/impact_sensitivity/'
+
+directory_output = '../../output/impact_sensitivity/'  # folder for the output
 directory_hazard = sys.argv[1]  # first input from the bash script.
 
-n_mc = literal_eval(sys.argv[2])
+n_mc = literal_eval(sys.argv[2])  #  number of runs
 
-# check the second input, which determines if the input should be calculated for Switzerland,
-# all cantons indepentently or for one specific canton:
+# check the third input, which determines if the input should be calculated for Switzerland,
+# all cantons independently or for one specific canton:
 if sys.argv[3] == 'CH':
     kantons = [None]
 else:
     kantons = [sys.argv[3]]
-    directory_output = '../../output/impact_cantons/'
 
 # get fourth input, the years for which to compute the impact
-years_list = [int(i) for i in Convert(sys.argv[4])]
+years_list = [int(i) for i in convert(sys.argv[4])]
 
 # get fith input, the scenarios for which to compute the impact
-scenarios = Convert(sys.argv[5])
-# check if any branches where given, or if the impact for all cathegories should be computed
+scenarios = convert(sys.argv[5])
 
-branch = None
+branch = None  # we don't specify the branches to analyze the sensitivity
 branches_str = 'all_branches'
 
-
-# check if any adaptation measures where given
+# no adaptation measures for this case
 adaptation_str = ''
-working_hours = None
+working_hours = [8,12,13,17]
 efficient_buildings = False
 sun_protection = False
 
-# determine if the median damage matrix should be saved as output
-
-
-
-# in this basic model run, all uncertainties are taken into accout.
-# his is not the case in the sensibility testing code where all are taken seperatly.
-if (sys.argv[6]) == '1':
-    uncertainty_variables_list   = ['hourly_temperature','sun_or_shadow','t_to_wbgt','temp_in','impactfunction'
-        ,'simulations','years']
-    uncertainty = 'all_uncertainties_independently'
-elif (sys.argv[6]) == '2':
-    uncertainty_variables_list   = ['ch2018']
-    uncertainty = 'natural_variability_uncertainty'
-elif (sys.argv[6]) == '3':
-    uncertainty_variables_list   = ['model']
-    uncertainty = 'model_uncertainty'
+uncertainty_variables_list = ['hourly_temperature', 'sun_or_shadow', 't_to_wbgt', 'temp_in', 'impactfunction'
+        , 'simulations', 'years']
+uncertainty = 'all_uncertainties_independently'
 
 save_median_mat = False
 
@@ -80,6 +65,6 @@ for kanton in kantons:  # loop through given kantons, one file per element in th
                                 branch=branch, working_hours=working_hours, sun_protection=sun_protection,
                                 efficient_buildings=efficient_buildings, save_median_mat=save_median_mat)
 
-    with open(''.join([directory_output, 'damage_cost_', branches_str, '_', str(n_mc), 'mc_',
+    with open(''.join([directory_output, 'sensitivity_', branches_str, '_', str(n_mc), 'mc_',
                        uncertainty, '_', adaptation_str, kanton_name, '.pickle']), 'wb') as handle:
         pickle.dump(IMPACT[0], handle, protocol=pickle.HIGHEST_PROTOCOL)

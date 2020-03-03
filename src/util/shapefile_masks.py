@@ -1,3 +1,15 @@
+
+
+"""
+
+
+I did not write most of this code:  these come from those threads
+https://stackoverflow.com/questions/51398563/python-mask-netcdf-data-using-shapefile,
+https://gist.github.com/shoyer/0eb96fa8ab683ef078eb
+Libraries like salem or regionmask could be used for this task but I didn't understand how to
+
+"""
+
 from rasterio import features
 from affine import Affine
 import pandas as pd
@@ -9,7 +21,6 @@ from pyproj import Proj, transform
 from geopandas import GeoDataFrame
 
 
-
 def transform_from_latlon(lat, lon):
     """ input 1D array of lat / lon and output an Affine transformation
     """
@@ -18,6 +29,7 @@ def transform_from_latlon(lat, lon):
     trans = Affine.translation(lon[0], lat[0])
     scale = Affine.scale(lon[1] - lon[0], lat[1] - lat[0])
     return trans * scale
+
 
 def rasterize(shapes, coords, latitude='latitude', longitude='longitude',
               fill=np.nan, **kwargs):
@@ -62,6 +74,7 @@ def rasterize(shapes, coords, latitude='latitude', longitude='longitude',
     spatial_coords = {latitude: coords[latitude], longitude: coords[longitude]}
     return xr.DataArray(raster, coords=spatial_coords, dims=(latitude, longitude))
 
+
 def add_shape_coord_from_data_array(xr_da, shp_path, region):
     """ Create a new coord for the xr_da indicating whether or not it 
          is inside the shapefile
@@ -72,7 +85,7 @@ def add_shape_coord_from_data_array(xr_da, shp_path, region):
     """
     # 1. read in shapefile
     shp_gpd = gpd.read_file(shp_path)
-    shp_gpd = shp_gpd[shp_gpd['NAME']==region]
+    shp_gpd = shp_gpd[shp_gpd['NAME'] == region]
 
     # 2. create a list of tuples (shapely.geometry, id)
     #    this allows for many different polygons within a .shp file (e.g. States of US)
@@ -80,18 +93,20 @@ def add_shape_coord_from_data_array(xr_da, shp_path, region):
 
     # 3. create a new coord in the xr_da which will be set to the id in `shapes`
     xr_da[region] = rasterize(shapes, xr_da.coords,
-                               longitude='lon', latitude='lat')
+                              longitude='lon', latitude='lat')
 
     return xr_da
 
-def vector_shapefile_mask(vector,shp_dir,region,epsg_input,epsg_output):
-    regions = gpd.read_file(shp_dir)
-    crs = {'init':'epsg:'+str(epsg_input)}
-    geometry = [Point(xy) for xy in zip(vector.longitude, vector.latitude)]
-    vector               =  gpd.GeoDataFrame(vector,crs=crs,geometry=geometry)
-    vector = vector.to_crs(crs={'init':'epsg:'+str(epsg_output)})
 
-    vector               =  gpd.sjoin(vector, regions[['NAME', 'geometry']], how='left', op='intersects')
-    vector               =  vector[vector['NAME']==region]
-    vector               =  vector.drop(columns = ['NAME','index_right','longitude','latitude'])
+def vector_shapefile_mask(vector, shp_dir, region, epsg_input, epsg_output): # this is used for the exposures, but is
+    # quite slow (not a big problem in the monte carlo as the exposures are called only once)
+    regions = gpd.read_file(shp_dir)
+    crs = {'init': 'epsg:' + str(epsg_input)}
+    geometry = [Point(xy) for xy in zip(vector.longitude, vector.latitude)]
+    vector = gpd.GeoDataFrame(vector, crs=crs, geometry=geometry)
+    vector = vector.to_crs(crs={'init': 'epsg:' + str(epsg_output)})
+
+    vector = gpd.sjoin(vector, regions[['NAME', 'geometry']], how='left', op='intersects')
+    vector = vector[vector['NAME'] == region]
+    vector = vector.drop(columns=['NAME', 'index_right', 'longitude', 'latitude'])
     return vector
