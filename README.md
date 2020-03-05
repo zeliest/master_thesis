@@ -66,7 +66,7 @@ https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
 
 ## Data Analyis
 
-The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The figures can be found in master_thesis/data_analysis/figures
+The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The figures can be found in master_thesis/data_analysis/figures.
 
  
 ## Research
