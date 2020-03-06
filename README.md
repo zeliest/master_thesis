@@ -78,9 +78,9 @@ The folder master_thesis/research/notebooks/ contains the jupyter notebooks wher
 
 Contains the source code of the model
 
-### lauch
+### launch
 
-Bash script and python code to launch the model
+Bash and python scripts to launch the model
 
 ### output
 
