@@ -68,14 +68,14 @@ A number of arguments are then optional:
        The results are calculated separatly for each canton given and saved in a different file. 
        g=CH corresponds to the entire country. Default: CH
         
-    y) Year or list of years for which to compute the damage. Default=2020,2035,2050 
+    y) Year or list of years for which to compute the damage. Default: 2020,2035,2050 
     
     s) Scenario or list of scenarios. Default: RCP26,RCP45,RCP85
     
     b) Branch or list of branches as defined in master_thesis_repo/input_data/exposures/work_intensity.csv 
        in the GIS_data_code column. Default: 0 (None) 
         
-    a) List of adaptation measures. 0=None, 1=sun protection, 2=efficient buildings, 3=adapted hours. Default=0
+    a) List of adaptation measures. 0=None, 1=sun protection, 2=efficient buildings, 3=adapted hours. Default: 0
     
     w) Working Hours, must be given if argument a) was previously set to 3. 
        The working hours must be precised as a list where the total time worked amounts to 8 hours. Default: 8,12,13,17 
