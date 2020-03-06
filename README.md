@@ -88,7 +88,7 @@ Ouput from the model
 
 ### input_data
 
-All the data used by the model, except the CH2018 maximum and temperature data.
+All the data used by the model, except the CH2018 maximum and minimum temperature data.
 
 
  
