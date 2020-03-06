@@ -1,7 +1,34 @@
 # Master Thesis on the Loss of Labor Productivity due to Heat in Switzerland
 Supervised by Marius Zumwald and Prof. David Bresch
 
-## Prerequisites
+## Folders
+
+### data_analysis
+The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The resulting figures can be found in master_thesis/data_analysis/figures.
+
+### research
+
+The folder master_thesis/research/notebooks/ contains the jupyter notebooks where the different elements used in the model were studied. The data used in these notebooks are in master_thesis/research/data and the output figures in master_thesis/research/figures
+
+### src
+
+Contains the source code to calculate the impacts in a Monte Carlo simulation
+
+### launch
+
+Bash and python scripts to launch the model.
+
+### output
+
+Pickle files ouput from the model
+
+### input_data
+
+All the data used by the model, except the CH2018 maximum and minimum temperature data
+
+
+
+## Prerequisites to run the model
 PYTHON 3.6+
 
 Anaconda or Miniconda 
@@ -64,31 +91,6 @@ To run the simulation on the euler cluster, the arguments for the cluster are gi
 More information on the possible arguments for the cluster can be found here: 
 https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
 
-## Folders
-
-### data_analysis
-The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The resulting figures can be found in master_thesis/data_analysis/figures.
-
- 
-### research
-
-The folder master_thesis/research/notebooks/ contains the jupyter notebooks where the different elements used in the model were studied. The data used in these notebooks are in master_thesis/research/data and the output figures in master_thesis/research/figures
-
-### src
-
-Contains the source code of the model
-
-### launch
-
-Bash and python scripts to launch the model
-
-### output
-
-Ouput from the model
-
-### input_data
-
-All the data used by the model, except the CH2018 maximum and minimum temperature data
 
 
  
