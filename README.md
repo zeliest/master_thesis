@@ -61,7 +61,7 @@ the model can then be launched from the command line, giving at least the argume
 
 A number of arguments are then optional:
 
-    c) The number of monte carlo simulations. Default: 1000
+    c) The number of runs in the monte carlo simulations. Default: 1000
     
     g) Area for which to calculate the impacts. 
        Given as the name of a canton, or list of canton, in the main language of the given cantons. 
