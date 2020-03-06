@@ -1,7 +1,34 @@
 # Master Thesis on the Loss of Labor Productivity due to Heat in Switzerland
 Supervised by Marius Zumwald and Prof. David Bresch
 
-## Prerequisites
+## Folders
+
+### data_analysis
+The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The resulting figures can be found in master_thesis/data_analysis/figures.
+
+### research
+
+The folder master_thesis/research/notebooks/ contains the jupyter notebooks where the different elements used in the model were studied. The data used in these notebooks are in master_thesis/research/data and the output figures in master_thesis/research/figures
+
+### src
+
+Contains the source code to calculate the impacts in a Monte Carlo simulation
+
+### launch
+
+Bash and python scripts to launch the model.
+
+### output
+
+Pickle files ouput from the model
+
+### input_data
+
+All the data used by the model, except the CH2018 maximum and minimum temperature data
+
+
+
+## Prerequisites to run the model
 PYTHON 3.6+
 
 Anaconda or Miniconda 
@@ -41,14 +68,14 @@ A number of arguments are then optional:
        The results are calculated separatly for each canton given and saved in a different file. 
        g=CH corresponds to the entire country. Default: CH
         
-    y) Year or list of years for which to compute the damage. Default=2020,2035,2050 
+    y) Year or list of years for which to compute the damage. Default: 2020,2035,2050 
     
     s) Scenario or list of scenarios. Default: RCP26,RCP45,RCP85
     
     b) Branch or list of branches as defined in master_thesis_repo/input_data/exposures/work_intensity.csv 
        in the GIS_data_code column. Default: 0 (None) 
         
-    a) List of adaptation measures. 0=None, 1=sun protection, 2=efficient buildings, 3=adapted hours. Default=0
+    a) List of adaptation measures. 0=None, 1=sun protection, 2=efficient buildings, 3=adapted hours. Default: 0
     
     w) Working Hours, must be given if argument a) was previously set to 3. 
        The working hours must be precised as a list where the total time worked amounts to 8 hours. Default: 8,12,13,17 
@@ -63,15 +90,6 @@ To run the simulation on the euler cluster, the arguments for the cluster are gi
 
 More information on the possible arguments for the cluster can be found here: 
 https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
-
-## Data Analyis
-
-The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The figures can be found in master_thesis/data_analysis/figures.
-
- 
-## Research
-
-The Research folder contains the data and the jupyter notebooks where the different elements used in the model were studied.
 
 
 
