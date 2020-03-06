@@ -76,12 +76,19 @@ The folder master_thesis/research/notebooks/ contains the jupyter notebooks wher
 
 ### src
 
-src contains the source code of the model
+Contains the source code of the model
 
 ### lauch
 
-bash script and python code to launch the model
+Bash script and python code to launch the model
 
+### output
+
+Ouput from the model
+
+### input_data
+
+All the data used by the model, except the CH2018 maximum and temperature data.
 
 
  
