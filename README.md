@@ -64,14 +64,23 @@ To run the simulation on the euler cluster, the arguments for the cluster are gi
 More information on the possible arguments for the cluster can be found here: 
 https://scicomp.ethz.ch/wiki/Getting_started_with_clusters#Job_monitoring
 
-## Data Analyis
+## Folders
 
-The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The figures can be found in master_thesis/data_analysis/figures.
+### data_analysis
+The results jupyter notebook in master_thesis/data_analysis/notebooks/ shows how to get the numbers and figures from the output of the model. The resulting figures can be found in master_thesis/data_analysis/figures.
 
  
-## Research
+### research
 
-The Research folder contains the data and the jupyter notebooks where the different elements used in the model were studied.
+The folder master_thesis/research/notebooks/ contains the jupyter notebooks where the different elements used in the model were studied. The data used in these notebooks are in master_thesis/research/data and the output figures in master_thesis/research/figures
+
+### src
+
+src contains the source code of the model
+
+### lauch
+
+bash script and python code to launch the model
 
 
 
