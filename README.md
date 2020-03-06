@@ -57,7 +57,7 @@ Once CLIMADA and joblib are installed, navigate to master_thesis/launch/bash_scr
 
 the model can then be launched from the command line, giving at least the arguments for the location of CLIMADA and the CH2018 data (no need to activate CLIMADA):
 
-    ./model_run.sh -d /path/to/climada -f /path/to/CH2018/
+    ./model_run.sh -d /path/to/climada -f /path/to/CH2018_tasmax_tasmin/
 
 A number of arguments are then optional:
 
